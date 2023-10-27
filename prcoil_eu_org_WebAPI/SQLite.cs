@@ -1,6 +1,6 @@
 ﻿using System.Data.SQLite;
 
-namespace prcoil_eu_org
+namespace prcoil_eu_org_WebAPI
 {
     internal class SQLite
     {

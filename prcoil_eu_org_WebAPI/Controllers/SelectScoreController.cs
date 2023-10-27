@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using prcoil_eu_org_WebAPI;
 
-namespace prcoil_eu_org.Controllers
+namespace prcoil_eu_org_WebAPI.Controllers
 {
-    [ApiController]
-
     //路由是直接函数名字
     [Route("[action]")]
-    //[Route("[controller]/[action]")]  
+    //[Route("[controller]/[action]")]
+
+    [ApiController]
+
     public class SelectScoreController : ControllerBase
     {
-
-
         //创建数据库类 传入路径
         SQLite sqlite = new SQLite("DataBase\\NZZX2022Score.db");
-
-
 
         [HttpGet]
         public IActionResult GetStudentData(string Name)

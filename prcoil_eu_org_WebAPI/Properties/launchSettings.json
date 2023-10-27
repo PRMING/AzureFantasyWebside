@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "WebApidemo": {
+    "prcoil_eu_org_WebAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

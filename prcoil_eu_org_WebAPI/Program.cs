@@ -1,4 +1,4 @@
-namespace prcoil_eu_org
+namespace prcoil_eu_org_WebAPI
 {
     public class Program
     {
