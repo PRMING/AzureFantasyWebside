@@ -19,7 +19,7 @@ namespace prcoil_eu_org_WebAPI.Controllers
         {
             //sqlite.Select($"SELECT * FROM SeniorTwo1 WHERE Name = '{Name}'");
 
-            //连接数据库
+            //连接数据库 一定记得要写！！！不然要报错
             sqlite.connectToDatabase();
 
             // 创建一个包含所需值的匿名对象

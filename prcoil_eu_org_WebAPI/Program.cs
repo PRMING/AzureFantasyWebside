@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Net.Http.Headers;
+
 namespace prcoil_eu_org_WebAPI
 {
     public class Program
@@ -5,6 +8,29 @@ namespace prcoil_eu_org_WebAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //øÁ”Ú»®œﬁ…Ë÷√
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Policy1",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://example.com",
+                                            "http://www.contoso.com")
+                              .WithMethods("PUT", "DELETE", "GET");
+                    });
+
+                options.AddPolicy("AnotherPolicy",
+                    policy =>
+                    {
+                        policy.WithOrigins("https://www.prcoil.eu.org",
+                                           "http://127.0.0.1:5500",
+                                           "https://testipv6.prcoil.eu.org")
+                                            .AllowCredentials()
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
 
             // Add services to the container.
 
@@ -24,8 +50,10 @@ namespace prcoil_eu_org_WebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            //øÁ”Ú
+            app.UseCors();
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

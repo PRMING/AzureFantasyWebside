@@ -12,6 +12,10 @@ namespace prcoil_eu_org_WebAPI
 
         public string dbName;
 
+
+
+
+
         //数据库连接
         SQLiteConnection m_dbConnection;
 
@@ -59,6 +63,33 @@ namespace prcoil_eu_org_WebAPI
                 string Class = reader.GetString(reader.GetOrdinal($"{input}"));
                 return Class;
             }
+            return "NotFind";
+        }
+
+        //prcoil.eu.org
+        //插入数据
+        public void fillTableRegister(string Email, string PhoneNumber, string Passworld, string UserName)
+        {
+            string sql = $"insert into UsersDataMain (Email,PhoneNumber,Passworld,UserName,RegistrationTime) values ({Email}, '{PhoneNumber}','{Passworld}',strftime('%s','now'))";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+        }
+        //查询
+        public string webLoginSelect(string OutputType, string SearchType, string SearchData)//根据手机号查询Result输出
+        {
+            //string sql = "select * from highscores order by score desc";
+            string sql = $"SELECT {OutputType} FROM UsersDataMain WHERE {SearchType} = '{SearchData}' ORDER BY Id DESC";
+
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                //将SQLiteCommand对象转换为String类型
+                string Class = reader.GetString(reader.GetOrdinal($"{OutputType}"));
+                return Class;
+            }
+            //未查询到:
             return "NotFind";
         }
     }
