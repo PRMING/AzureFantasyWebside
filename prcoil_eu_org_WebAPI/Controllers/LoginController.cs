@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using prcoil_eu_org_WebAPI.Models;
 
@@ -15,7 +14,10 @@ namespace prcoil_eu_org_WebAPI.Controllers
     {
         //创建数据库类 传入路径
         SQLite sqlite = new SQLite("DataBase\\UsersData.db");
+        //token服务
+        TokenService tokenService = new TokenService();
 
+        //启用跨域
         [EnableCors("AnotherPolicy")]
         [HttpPost]
         public IActionResult UserLogin([FromBody] UserLoginData userLoginData)
@@ -32,7 +34,10 @@ namespace prcoil_eu_org_WebAPI.Controllers
 
                 if (userLoginData.password == sqlite.webLoginSelect("Passworld","PhoneNumber", userLoginData.username))
                 {
-                    return Ok("登录成功");
+                    // Set the token in the response header
+                    Response.Headers.Add("Authorization", $"Bearer {tokenService.GenerateJwtToken(userLoginData.username)}");
+
+                    return Ok(new { message = "Token sent in the response header" });
                 }
                 else
                 {

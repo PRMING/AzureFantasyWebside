@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace prcoil_eu_org_WebAPI
 {
@@ -9,6 +9,7 @@ namespace prcoil_eu_org_WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //---------------------------------------------------------------------------------------------------------------------
             //跨域权限设置
             builder.Services.AddCors(options =>
             {
@@ -32,6 +33,25 @@ namespace prcoil_eu_org_WebAPI
                     });
             });
 
+            // 在此处配置JWT身份验证
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "prcoil",
+                        ValidateAudience = true,
+                        ValidAudience = "webprcoil",
+                        ValidateLifetime = true,
+                        //key
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("amA9gMV2GQNhg4NAeJe5sBiclyvv7HQD9eGPr3y1CTPUmXJewqo1UMyW/ouxZLJdqDO8351LBKtD8+S7pvrZsw==")),
+                        //ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+            //---------------------------------------------------------------------------------------------------------------------
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -50,8 +70,14 @@ namespace prcoil_eu_org_WebAPI
 
             app.UseHttpsRedirection();
 
+            // 在这里配置其他服务-----------------------------------------------------------------------------------------------------
+
             //跨域
             app.UseCors();
+            //token
+            app.UseAuthentication();
+
+            //---------------------------------------------------------------------------------------------------------------------
 
             app.UseAuthorization();
 
