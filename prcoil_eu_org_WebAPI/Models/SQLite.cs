@@ -72,7 +72,7 @@ namespace prcoil_eu_org_WebAPI.Models
         //插入数据
         public void FillTableRegister(string Email, string CellPhone, string Passworld, string UserName)
         {
-            string sql = $"insert into UsersDataMain (Email,cellphone,Passworld,UserName,RegistrationTime) values ('{Email}', '{CellPhone}','{Passworld}','{UserName}',strftime('%s','now'))";
+            string sql = $"insert into UsersDataMain (Email,CellPhone,Passworld,UserName,RegistrationTime) values ('{Email}', '{CellPhone}','{Passworld}','{UserName}',strftime('%s','now'))";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
