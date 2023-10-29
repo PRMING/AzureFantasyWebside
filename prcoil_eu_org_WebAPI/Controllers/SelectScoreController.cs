@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using prcoil_eu_org_WebAPI;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using prcoil_eu_org_WebAPI.Models;
 
 namespace prcoil_eu_org_WebAPI.Controllers
 {
@@ -14,13 +15,15 @@ namespace prcoil_eu_org_WebAPI.Controllers
         //创建数据库类 传入路径
         SQLite sqlite = new SQLite("DataBase\\NZZX2022Score.db");
 
+        //JWT身份验证(谁要就在谁前面加)
+        //[Authorize]
         [HttpGet]
         public IActionResult GetStudentData(string Name)
         {
             //sqlite.Select($"SELECT * FROM SeniorTwo1 WHERE Name = '{Name}'");
 
             //连接数据库 一定记得要写！！！不然要报错
-            sqlite.connectToDatabase();
+            sqlite.ConnectToDatabase();
 
             // 创建一个包含所需值的匿名对象
             var studentData = new

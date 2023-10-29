@@ -2,8 +2,10 @@
 {
     public class UserLoginData
     {
-        public string username { get; set; }
+        //public string username { get; set; }
+        public string cellphone { get; set; }
         public string password { get; set; }
+
         public string captcha { get; set; }
         public string remember { get; set; }
     }
