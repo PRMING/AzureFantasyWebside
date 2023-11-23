@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prcoil_eu_org_WebAPI", "prcoil_eu_org_WebAPI\prcoil_eu_org_WebAPI.csproj", "{CBDCE270-F28E-467F-95EA-FACCAB3CB4EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "更新数据", "更新数据\更新数据.csproj", "{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CBDCE270-F28E-467F-95EA-FACCAB3CB4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBDCE270-F28E-467F-95EA-FACCAB3CB4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBDCE270-F28E-467F-95EA-FACCAB3CB4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
