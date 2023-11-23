@@ -1,62 +1,60 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using prcoil_eu_org_WebAPI.Models;
 
 namespace prcoil_eu_org_WebAPI.Controllers
 {
     //路由是直接函数名字
-    [Route("[action]")]
+    [Route("")]
     //[Route("[controller]/[action]")]
 
     [ApiController]
 
     public class SelectScoreController : ControllerBase
     {
-        //创建数据库类 传入路径
-        SQLite sqlite = new SQLite("DataBase\\NZZX2022Score.db");
-
         //JWT身份验证(谁要就在谁前面加)
-        //[Authorize]
-        [HttpGet]
-        public IActionResult GetStudentData(string Name)
+        // [Authorize]
+        [EnableCors("AnotherPolicy")]
+        [HttpGet("GetStudentData")]
+        public IActionResult GetStudentData(string? name)
         {
-            //sqlite.Select($"SELECT * FROM SeniorTwo1 WHERE Name = '{Name}'");
+            string defultSelectTable = "senior_second_month1";
 
-            //连接数据库 一定记得要写！！！不然要报错
-            sqlite.ConnectToDatabase();
+            MySqlService mySqlService = new MySqlService();
 
             // 创建一个包含所需值的匿名对象
             var studentData = new
             {
-                Class = sqlite.Select(Name, "Class"),
-                Name = sqlite.Select(Name, "Name"),
-                Num = sqlite.Select(Name, "Num"),
-                Score = sqlite.Select(Name, "Score"),
-                AssignScore = sqlite.Select(Name, "AssignScore"),
-                GradeRanking = sqlite.Select(Name, "GradeRanking"),
-                ClassRanking = sqlite.Select(Name, "ClassRanking"),
-                Chinese = sqlite.Select(Name, "Chinese"),
-                ChineseRanking = sqlite.Select(Name, "ChineseRanking"),
-                Math = sqlite.Select(Name, "Math"),
-                MathRanking = sqlite.Select(Name, "MathRanking"),
-                English = sqlite.Select(Name, "English"),
-                EnglishRanking = sqlite.Select(Name, "EnglishRanking"),
-                Physics = sqlite.Select(Name, "Physics"),
-                PhysicsRanking = sqlite.Select(Name, "PhysicsRanking"),
-                History = sqlite.Select(Name, "History"),
-                HistoryRanking = sqlite.Select(Name, "HistoryRanking"),
-                Chemistry = sqlite.Select(Name, "Chemistry"),
-                AssignChemistry = sqlite.Select(Name, "AssignChemistry"),
-                ChemistryRanking = sqlite.Select(Name, "ChemistryRanking"),
-                Organism = sqlite.Select(Name, "Organism"),
-                AssignOrganism = sqlite.Select(Name, "AssignOrganism"),
-                OrganismRanking = sqlite.Select(Name, "OrganismRanking"),
-                Politics = sqlite.Select(Name, "Politics"),
-                AssignPolitics = sqlite.Select(Name, "AssignPolitics"),
-                PoliticsRanking = sqlite.Select(Name, "PoliticsRanking"),
-                Geography = sqlite.Select(Name, "Geography"),
-                AssignGeography = sqlite.Select(Name, "AssignGeography"),
-                GeographyRanking = sqlite.Select(Name, "GeographyRanking"),
+                Class = mySqlService.MySqlSelect("class","name",name, defultSelectTable),
+                Name = mySqlService.MySqlSelect("name", "name", name, defultSelectTable),
+                Num = mySqlService.MySqlSelect("num", "name", name, defultSelectTable),
+                Score = mySqlService.MySqlSelect("score", "name", name, defultSelectTable),
+                Assignscore = mySqlService.MySqlSelect("assignscore", "name", name, defultSelectTable),
+                Graderanking = mySqlService.MySqlSelect("graderanking", "name", name, defultSelectTable),
+                Classranking = mySqlService.MySqlSelect("classranking", "name", name, defultSelectTable),
+                Chinese = mySqlService.MySqlSelect("chinese", "name", name, defultSelectTable),
+                Chineseranking = mySqlService.MySqlSelect("chineseranking", "name", name, defultSelectTable),
+                Math = mySqlService.MySqlSelect("math", "name", name, defultSelectTable),
+                Mathranking = mySqlService.MySqlSelect("mathranking", "name", name, defultSelectTable),
+                English = mySqlService.MySqlSelect("english", "name", name, defultSelectTable),
+                Englishranking = mySqlService.MySqlSelect("englishranking", "name", name, defultSelectTable),
+                Physics = mySqlService.MySqlSelect("physics", "name", name, defultSelectTable),
+                Physicsranking = mySqlService.MySqlSelect("physicsranking", "name", name, defultSelectTable),
+                History = mySqlService.MySqlSelect("history", "name", name, defultSelectTable),
+                Historyranking = mySqlService.MySqlSelect("historyranking", "name", name, defultSelectTable),
+                Chemistry = mySqlService.MySqlSelect("chemistry", "name", name, defultSelectTable),
+                Assignchemistry = mySqlService.MySqlSelect("assignchemistry", "name", name, defultSelectTable),
+                Chemistryranking = mySqlService.MySqlSelect("chemistryranking", "name", name, defultSelectTable),
+                Organism = mySqlService.MySqlSelect("organism", "name", name, defultSelectTable),
+                Assignorganism = mySqlService.MySqlSelect("assignorganism", "name", name, defultSelectTable),
+                Organismranking = mySqlService.MySqlSelect("organismranking", "name", name, defultSelectTable),
+                Politics = mySqlService.MySqlSelect("politics", "name", name, defultSelectTable),
+                Assignpolitics = mySqlService.MySqlSelect("assignpolitics", "name", name, defultSelectTable),
+                Politicsranking = mySqlService.MySqlSelect("politicsranking", "name", name, defultSelectTable),
+                Geography = mySqlService.MySqlSelect("geography", "name", name, defultSelectTable),
+                Assigngeography = mySqlService.MySqlSelect("assigngeography", "name", name, defultSelectTable),
+                Geographyranking = mySqlService.MySqlSelect("geographyranking", "name", name, defultSelectTable),
             };
 
             return Ok(studentData);

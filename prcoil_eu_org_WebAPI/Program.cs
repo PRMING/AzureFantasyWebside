@@ -26,7 +26,8 @@ namespace prcoil_eu_org_WebAPI
                     policy =>
                     {
                         policy.WithOrigins("https://www.prcoil.eu.org",
-                                            "http://127.0.0.1:5500",
+                                            "http://127.0.0.1:5501",
+                                            "http://localhost:63342",
                                             "https://testipv6.prcoil.eu.org")
                                             .AllowCredentials()
                                             .AllowAnyHeader()
@@ -56,6 +57,9 @@ namespace prcoil_eu_org_WebAPI
                     };
                 });
 
+            // api请求
+            builder.Services.AddHttpClient();
+            
             //---------------------------------------------------------------------------------------------------------------------
 
             // Add services to the container.

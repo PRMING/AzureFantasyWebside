@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using prcoil_eu_org_WebAPI.Models;
+using prcoil_eu_org_WebAPI.Models.Data;
 
 namespace prcoil_eu_org_WebAPI.Controllers
 {
@@ -10,52 +11,53 @@ namespace prcoil_eu_org_WebAPI.Controllers
 
     [ApiController]
 
-    public class Login_RegisterController : ControllerBase
+    public class LoginRegisterController : ControllerBase
     {
-        //创建数据库类 传入路径
-        SQLite sqlite = new SQLite("DataBase\\UsersData.db");
-        //token服务
-        TokenService tokenService = new TokenService();
+        string _defultSelectTable = "web_users_data";
+
+        
 
         //登录---------------------------------------------------------------------------------------------------------------------
         //启用跨域
         [EnableCors("AnotherPolicy")]
         [HttpPost("UserLogin")]//!!!跨域必须指定路由模板不同名称
-        public IActionResult UserLogin([FromBody] UserLoginData userLoginData)
+        public IActionResult UserLogin([FromBody] UserLoginData? userLoginData)
         {
-            //连接数据库 一定记得要写！！！不然要报错
-            sqlite.ConnectToDatabase();
-
             if (userLoginData != null)
             {
-                string cellphone = userLoginData.cellphone;
-                string password = userLoginData.password;
+                string? cellphone = userLoginData.Cellphone;
+                string? password = userLoginData.Password;
                 //string username = userLoginData.username;
                 //string captcha = userLoginData.captcha;
                 //string remember = userLoginData.remember;
 
+                MySqlService mySqlService = new MySqlService();//数据库对象
+
                 //如果找不到账号:
-                if ("DataNotFound" == sqlite.WebDataSelect("Passworld", "CellPhone", cellphone)) 
+                if ("DataNotFound" == mySqlService.MySqlSelect("passworld", "cellphone", cellphone, _defultSelectTable)) 
                 {
                     return Ok(new { message = "未找到账户" });
                 }
                 //如果找到账户:
-                else if (password == sqlite.WebDataSelect("Passworld","CellPhone", cellphone))
+                else if (password == mySqlService.MySqlSelect("passworld","cellphone", cellphone, _defultSelectTable))
                 {
                     //允许获取header中的"authorization"(token)
                     HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "authorization");
-                    //设置token在响应头
-                    HttpContext.Response.Headers.Add("authorization", $"{tokenService.GenerateJwtToken(sqlite.WebDataSelect("UserName", "CellPhone", cellphone))}");
 
-                    return Ok(new { message = "已登录,Token已发送" });
+                    //token服务
+                    TokenService tokenService = new TokenService();
+
+                    //设置token在响应头
+                    HttpContext.Response.Headers.Add("authorization", $"{tokenService.GenerateJwtToken(cellphone)}");
+
+                    return Ok("已登录,Token已发送");
                 }
                 //如果密码不对:
                 else
                 {
-                    return Ok(new { message = "密码错误" });
+                    return Ok("密码错误");
                 }
             }
-
             return Ok("服务器错误,注册功能异常");
         }
 
@@ -65,28 +67,27 @@ namespace prcoil_eu_org_WebAPI.Controllers
         //启用跨域
         [EnableCors("AnotherPolicy")]
         [HttpPost("UserRegisher")]//!!!跨域必须指定路由模板不同名称
-        public IActionResult UserRegisher([FromBody] UserRegisterData userRegisterData)
+        public IActionResult UserRegisher([FromBody] UserRegisterData? userRegisterData)
         {
-            //连接数据库 一定记得要写！！！不然要报错
-            sqlite.ConnectToDatabase();
-
             if (userRegisterData != null)
             {
-                string cellphone = userRegisterData.cellphone;
-                string username = userRegisterData.username;
-                string password = userRegisterData.password;
+                MySqlService mySqlService = new MySqlService();//数据库对象
+
+                string? cellphone = userRegisterData.Cellphone;
+                string? username = userRegisterData.Username;
+                string? password = userRegisterData.Password;
                 //未设置email
-                string email = "";
+                string? email = "";
 
                 //如果找不到账户:
-                if ("DataNotFound" == sqlite.WebDataSelect("Passworld", "CellPhone", cellphone))
+                if ("DataNotFound" == mySqlService.MySqlSelect("passworld", "cellphone", cellphone, _defultSelectTable))
                 {
-                    sqlite.FillTableRegister(email, cellphone, password, username);
+                    mySqlService.MySqlInsertWebReg("username", "email", "cellphone", "passworld", _defultSelectTable, username, email, cellphone, password);
 
                     return Ok(new { message = "已注册" });
                 }
                 //如果找的到账户
-                else if (sqlite.WebDataSelect("Passworld", "CellPhone", cellphone) != "DataNotFound")
+                else if (mySqlService.MySqlSelect("passworld", "cellphone", cellphone, _defultSelectTable) != "DataNotFound")
                 {
                     return Ok(new { message = "账户已被注册" });
                 }
