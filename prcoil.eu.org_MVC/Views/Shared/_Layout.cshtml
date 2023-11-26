@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    @* View引入css *@
+    @await RenderSectionAsync("Styles", false)
+</head>
+
+<body class="flexColumn">
+    <header class="flexRow">
+        <h1 class="header-h1">@ViewData["h1"]</h1>
+        <ul class="flexRow header-ul">
+            <a href="/" class="header-ul-a">
+                <li class=" header-ul-a-li">主页</li>
+            </a>
+            <a href="/scoreselect" class="header-ul-a">
+                <li class="header-ul-a-li">成绩查询</li>
+            </a>
+        </ul>
+    </header>
+    <div>
+        <div style="height: 56px;"></div>
+    </div>
+
+    <main class="flexRow">
+        @RenderBody()
+    </main>
+    @* Axios *@
+    <script src="~/lib/axios/axios.min.js"></script>
+    @* View引入js *@
+    @await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

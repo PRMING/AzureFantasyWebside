@@ -1,0 +1,74 @@
+/* 卡片内容栏 */
+.main-cardBox {
+    margin: 20px;
+    max-width: 500px;
+    flex: 1;
+}
+
+/* 卡片内容子项 */
+.main-cardBox-child {
+    height: 210px;
+    /* width: 400px; */
+
+    padding: 30px;
+    margin-bottom: 20px;
+
+    position: relative;
+
+    color: #fff;
+    border-radius: 30px;
+    background-color: #dddfe1;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-cardBox-child h2 {
+    font-family: 'ZCOOL XiaoWei', sans-serif;
+    font-weight: 400;
+}
+
+/* 日期 */
+.main-cardBox-child h2:nth-child(1) {
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+/* 句子 */
+.main-cardBox-child h2:nth-child(2) {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.main-cardBox-child p {
+    font-size: 18px;
+    font-family: 'ZCOOL XiaoWei', sans-serif;
+    text-align: right;
+}
+
+@media screen and (min-width: 360px) and (max-width: 390px) {
+    .main-cardBox-child h2:nth-child(1) {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+
+    .main-cardBox-child h2:nth-child(2) {
+        font-size: 20px;
+    }
+
+    .main-cardBox-child p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .main-cardBox-child h2:nth-child(1) {
+        font-size: 33px;
+        margin-bottom: 40px;
+    }
+
+    .main-cardBox-child p {
+        font-size: 16px;
+    }
+}

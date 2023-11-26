@@ -1,106 +1,106 @@
 ﻿using MySql.Data.MySqlClient;
 
-namespace prcoil_eu_org_WebAPI.Models
+namespace prcoil_eu_org_WebAPI.Models;
+
+public class MySqlService
 {
-    public class MySqlService
+    private readonly string? _database;
+    private readonly string? _password;
+    private readonly string? _serverip;
+    private readonly string? _uid;
+
+    //构造函数
+    public MySqlService(string serverip, string database, string uid, string password)
     {
-        string? _serverip;
-        string? _database;
-        string? _uid;
-        string? _password;
+        _serverip = serverip;
+        _database = database;
+        _uid = uid;
+        _password = password;
+    }
 
-        //构造函数
-        public MySqlService(string serverip, string database, string uid, string password)
+    //函数重载
+    public MySqlService()
+    {
+        _serverip = "127.0.0.1";
+        _database = "serverdata";
+        _uid = "root";
+        _password = "248655";
+    }
+
+
+    public void MySqlInsertWebReg(string into1, string into2, string into3, string into4,
+        string table,
+        string? value1, string? value2, string? value3, string? value4)
+    {
+        var connectionString =
+            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+
+        using (var connection = new MySqlConnection(connectionString))
         {
-            _serverip = serverip;
-            _database = database;
-            _uid = uid;
-            _password = password;
-        }
-        //函数重载
-        public MySqlService()
-        {
-            _serverip = "127.0.0.1";
-            _database = "serverdata";
-            _uid = "root";
-            _password = "248655";
-        }
+            connection.Open(); //打开数据库连接
 
-
-
-        public void MySqlInsertWebReg(string into1, string into2, string into3, string into4,
-                                      string table,
-                                      string? value1, string? value2, string? value3, string? value4)
-        {
-            string connectionString = $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            var sql = $"INSERT INTO {table} ({into1},{into2},{into3},{into4}) VALUES (@值1,@值2,@值3,@值4)";
+            using (var cmd = new MySqlCommand(sql, connection))
             {
-                connection.Open();//打开数据库连接
+                cmd.Parameters.AddWithValue("@值1", $"{value1}");
+                cmd.Parameters.AddWithValue("@值2", $"{value2}");
+                cmd.Parameters.AddWithValue("@值3", $"{value3}");
+                cmd.Parameters.AddWithValue("@值4", $"{value4}");
+                cmd.ExecuteNonQuery();
 
-                string sql = $"INSERT INTO {table} ({into1},{into2},{into3},{into4}) VALUES (@值1,@值2,@值3,@值4)";
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                {
-                    cmd.Parameters.AddWithValue("@值1", $"{value1}");
-                    cmd.Parameters.AddWithValue("@值2", $"{value2}");
-                    cmd.Parameters.AddWithValue("@值3", $"{value3}");
-                    cmd.Parameters.AddWithValue("@值4", $"{value4}");
-                    cmd.ExecuteNonQuery();
-
-                    connection.Close();//关闭连接
-                }
-
+                connection.Close(); //关闭连接
             }
         }
-        public void MySqlInsertOne(string into1, string table,string? value1)
+    }
+
+    public void MySqlInsertOne(string into1, string table, string? value1)
+    {
+        var connectionString =
+            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+
+        using (var connection = new MySqlConnection(connectionString))
         {
-            string connectionString = $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            connection.Open(); //打开数据库连接
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            var sql = $"INSERT INTO {table} ({into1}) VALUES (@值1)";
+            using (var cmd = new MySqlCommand(sql, connection))
             {
-                connection.Open();//打开数据库连接
+                cmd.Parameters.AddWithValue("@值1", $"{value1}");
+                cmd.ExecuteNonQuery();
 
-                string sql = $"INSERT INTO {table} ({into1}) VALUES (@值1)";
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                {
-                    cmd.Parameters.AddWithValue("@值1", $"{value1}");
-                    cmd.ExecuteNonQuery();
-
-                    connection.Close();//关闭连接
-                }
-
+                connection.Close(); //关闭连接
             }
         }
-        
+    }
 
-        public string? MySqlSelect(string outputType, string searchType, string? searchData, string table)
+
+    public string? MySqlSelect(string outputType, string searchType, string? searchData, string table)
+    {
+        var connectionString =
+            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+
+        using (var connection = new MySqlConnection(connectionString))
         {
-            string connectionString = $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            connection.Open(); //打开数据库连接
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            var selectQuery = $"SELECT {outputType} FROM {table} WHERE {searchType} = '{searchData}' ORDER BY Id DESC";
+            using (var selectCommand = new MySqlCommand(selectQuery, connection))
             {
-
-                connection.Open();//打开数据库连接
-
-                string selectQuery = $"SELECT {outputType} FROM {table} WHERE {searchType} = '{searchData}' ORDER BY Id DESC";
-                using (MySqlCommand selectCommand = new MySqlCommand(selectQuery, connection))
+                using (var reader = selectCommand.ExecuteReader())
                 {
-                    using (MySqlDataReader reader = selectCommand.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            string? result = reader[$"{outputType}"].ToString();
-                            // 使用文件流进行读写操作
+                        var result = reader[$"{outputType}"].ToString();
+                        // 使用文件流进行读写操作
 
-                            connection.Close();//关闭数据库
-                            return result;
-                        }// 在这里，文件流会被自动关闭和释放
-                        connection.Close();
-                        return "DataNotFound";
-                    }
+                        connection.Close(); //关闭数据库
+                        return result;
+                    } // 在这里，文件流会被自动关闭和释放
+
+                    connection.Close();
+                    return "DataNotFound";
                 }
             }
         }
-
     }
 }

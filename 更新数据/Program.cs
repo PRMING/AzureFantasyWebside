@@ -61,9 +61,9 @@ namespace 更新数据
                 }
                 else 
                 {
-                    int updateTime = 3;
-                    Console.WriteLine($"[INFO]{System.DateTime.Now.ToString("F")} 无需更新 下次更新检测时间: {Convert.ToString(updateTime)} 秒");
-                    Thread.Sleep(updateTime*1000);
+                    int updateTime = 1;
+                    Console.WriteLine($"[INFO]{System.DateTime.Now.ToString("F")} 无需更新 下次更新检测时间: {Convert.ToString(updateTime)} 分");
+                    Thread.Sleep(updateTime*1000*60);
                 }
             }
         }

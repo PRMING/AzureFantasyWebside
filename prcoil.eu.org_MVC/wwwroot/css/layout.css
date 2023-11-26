@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&family=ZCOOL+XiaoWei&display=swap');
+
+
+.flexRow {
+    flex-direction: row;
+    display: flex;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.displayNone {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid; */
+    font-family: 'Noto Sans SC', sans-serif;
+
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 330px;
+    height: 100vh;
+    background-color: #fcfcfc;
+    /* 390 */
+
+    /* font-size: 25.64102564102564vw; */
+}
+
+/* 导航栏 */
+header {
+    min-width: 330px;
+    height: 56px;
+    /* flex对齐方式 */
+    justify-content: space-between;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    z-index: 1;
+
+    align-items: center;
+    border-bottom: 1px solid #E6E6E6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+
+    /* 模糊 */
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(20px);
+
+    width: 100%;
+    color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header-h1 {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.header-ul {
+    height: 100%;
+}
+
+.header-ul-a {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    /* margin-left: 30px; */
+    width: auto;
+    transition: .2s;
+    color: #000;
+    text-decoration: none;
+}
+
+.header-ul-a:hover {
+    background: rgba(227, 229, 231, 0.5);
+}
+
+.header-ul-a-li {
+    font-size: 17px;
+    list-style-type: none;
+}
+
+
+
+main {
+    /* margin-top: 56px; */
+
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+
+    /* 内部滚动 */
+    /* overflow: auto; */
+
+    /* 换行重要 */
+    flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 390px) {
+
+    /* 标题 */
+    .header-h1 {
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    .header-ul-a-li {
+        font-size: 15px;
+    }
+}
