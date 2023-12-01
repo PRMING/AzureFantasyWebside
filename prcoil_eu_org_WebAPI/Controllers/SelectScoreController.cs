@@ -16,42 +16,42 @@ public class SelectScoreController : ControllerBase
     [HttpGet("GetStudentData")]
     public IActionResult GetStudentData(string? name)
     {
-        var defultSelectTable = "senior_second_month1";
+        var defultSelectTable = "20231127";
 
-        var mySqlService = new MySqlService();
+        var mySqlService = new MySqlService("47.76.176.11","nzzx","nzzx", "6ebKpT2J5SjspXhZ");
 
         // 创建一个包含所需值的匿名对象
         var studentData = new
         {
-            Class = mySqlService.MySqlSelect("class", "name", name, defultSelectTable),
-            Name = mySqlService.MySqlSelect("name", "name", name, defultSelectTable),
-            Num = mySqlService.MySqlSelect("num", "name", name, defultSelectTable),
-            Score = mySqlService.MySqlSelect("score", "name", name, defultSelectTable),
-            Assignscore = mySqlService.MySqlSelect("assignscore", "name", name, defultSelectTable),
-            Graderanking = mySqlService.MySqlSelect("graderanking", "name", name, defultSelectTable),
-            Classranking = mySqlService.MySqlSelect("classranking", "name", name, defultSelectTable),
-            Chinese = mySqlService.MySqlSelect("chinese", "name", name, defultSelectTable),
-            Chineseranking = mySqlService.MySqlSelect("chineseranking", "name", name, defultSelectTable),
-            Math = mySqlService.MySqlSelect("math", "name", name, defultSelectTable),
-            Mathranking = mySqlService.MySqlSelect("mathranking", "name", name, defultSelectTable),
-            English = mySqlService.MySqlSelect("english", "name", name, defultSelectTable),
-            Englishranking = mySqlService.MySqlSelect("englishranking", "name", name, defultSelectTable),
-            Physics = mySqlService.MySqlSelect("physics", "name", name, defultSelectTable),
-            Physicsranking = mySqlService.MySqlSelect("physicsranking", "name", name, defultSelectTable),
-            History = mySqlService.MySqlSelect("history", "name", name, defultSelectTable),
-            Historyranking = mySqlService.MySqlSelect("historyranking", "name", name, defultSelectTable),
-            Chemistry = mySqlService.MySqlSelect("chemistry", "name", name, defultSelectTable),
-            Assignchemistry = mySqlService.MySqlSelect("assignchemistry", "name", name, defultSelectTable),
-            Chemistryranking = mySqlService.MySqlSelect("chemistryranking", "name", name, defultSelectTable),
-            Organism = mySqlService.MySqlSelect("organism", "name", name, defultSelectTable),
-            Assignorganism = mySqlService.MySqlSelect("assignorganism", "name", name, defultSelectTable),
-            Organismranking = mySqlService.MySqlSelect("organismranking", "name", name, defultSelectTable),
-            Politics = mySqlService.MySqlSelect("politics", "name", name, defultSelectTable),
-            Assignpolitics = mySqlService.MySqlSelect("assignpolitics", "name", name, defultSelectTable),
-            Politicsranking = mySqlService.MySqlSelect("politicsranking", "name", name, defultSelectTable),
-            Geography = mySqlService.MySqlSelect("geography", "name", name, defultSelectTable),
-            Assigngeography = mySqlService.MySqlSelect("assigngeography", "name", name, defultSelectTable),
-            Geographyranking = mySqlService.MySqlSelect("geographyranking", "name", name, defultSelectTable)
+            ban = mySqlService.MySqlSelect("ban", "name", name, defultSelectTable),
+            name = mySqlService.MySqlSelect("name", "name", name, defultSelectTable),
+            kaohao = mySqlService.MySqlSelect("kaohao", "name", name, defultSelectTable),
+            zongfen = mySqlService.MySqlSelect("zongfen", "name", name, defultSelectTable),
+            fufenzongfen = mySqlService.MySqlSelect("fufenzongfen", "name", name, defultSelectTable),
+            zongfenpaiming = mySqlService.MySqlSelect("zongfenpaiming", "name", name, defultSelectTable),
+            banjipaiming = mySqlService.MySqlSelect("banjipaiming", "name", name, defultSelectTable),
+            yuwen = mySqlService.MySqlSelect("yuwen", "name", name, defultSelectTable),
+            yuwenpaiming = mySqlService.MySqlSelect("yuwenpaiming", "name", name, defultSelectTable),
+            shuxue = mySqlService.MySqlSelect("shuxue", "name", name, defultSelectTable),
+            shuxuepaiming = mySqlService.MySqlSelect("shuxuepaiming", "name", name, defultSelectTable),
+            yingyu = mySqlService.MySqlSelect("yingyu", "name", name, defultSelectTable),
+            yingyupaiming = mySqlService.MySqlSelect("yingyupaiming", "name", name, defultSelectTable),
+            wuli = mySqlService.MySqlSelect("wuli", "name", name, defultSelectTable),
+            wulipaiming = mySqlService.MySqlSelect("wulipaiming", "name", name, defultSelectTable),
+            lishi = mySqlService.MySqlSelect("lishi", "name", name, defultSelectTable),
+            lishipaiming = mySqlService.MySqlSelect("lishipaiming", "name", name, defultSelectTable),
+            huaxueyuanshi = mySqlService.MySqlSelect("huaxueyuanshi", "name", name, defultSelectTable),
+            huaxuefufen = mySqlService.MySqlSelect("huaxuefufen", "name", name, defultSelectTable),
+            huaxuepaiming = mySqlService.MySqlSelect("huaxuepaiming", "name", name, defultSelectTable),
+            shengwuyuanshi = mySqlService.MySqlSelect("shengwuyuanshi", "name", name, defultSelectTable),
+            shengwufufen = mySqlService.MySqlSelect("shengwufufen", "name", name, defultSelectTable),
+            shengwupaiming = mySqlService.MySqlSelect("shengwupaiming", "name", name, defultSelectTable),
+            zhengzhiyuanshi = mySqlService.MySqlSelect("zhengzhiyuanshi", "name", name, defultSelectTable),
+            zhengzhifufen = mySqlService.MySqlSelect("zhengzhifufen", "name", name, defultSelectTable),
+            zhengzhipaiming = mySqlService.MySqlSelect("zhengzhipaiming", "name", name, defultSelectTable),
+            diliyuanshi = mySqlService.MySqlSelect("diliyuanshi", "name", name, defultSelectTable),
+            dilifufen = mySqlService.MySqlSelect("dilifufen", "name", name, defultSelectTable),
+            dilipaiming = mySqlService.MySqlSelect("dilipaiming", "name", name, defultSelectTable)
         };
 
         return Ok(studentData);

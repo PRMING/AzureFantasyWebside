@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prcoil_eu_org_WebAPI", "prcoil_eu_org_WebAPI\prcoil_eu_org_WebAPI.csproj", "{CBDCE270-F28E-467F-95EA-FACCAB3CB4EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "更新数据", "更新数据\更新数据.csproj", "{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateData", "更新数据\UpdateData.csproj", "{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prcoil.eu.org_MVC", "prcoil.eu.org_MVC\prcoil.eu.org_MVC.csproj", "{4BBD15AE-C881-46ED-8209-5C08BE85B2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prcoil.eu.org_MVC", "prcoil.eu.org_MVC\prcoil.eu.org_MVC.csproj", "{4BBD15AE-C881-46ED-8209-5C08BE85B2CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

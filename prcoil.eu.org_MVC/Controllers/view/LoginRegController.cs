@@ -2,7 +2,7 @@
 
 namespace prcoil.eu.org_MVC.Controllers.view
 {
-    public class ScoreSelect : Controller
+    public class LoginRegController : Controller
     {
         public IActionResult Index()
         {

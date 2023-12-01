@@ -16,7 +16,7 @@ public class SelectScoreController : ControllerBase
     [HttpGet("GetStudentData")]
     public IActionResult GetStudentData(string? name)
     {
-        var defultSelectTable = "senior_second_month1";
+        var defultSelectTable = "senior_second_shang_half";
 
         var mySqlService = new MySqlService();
 

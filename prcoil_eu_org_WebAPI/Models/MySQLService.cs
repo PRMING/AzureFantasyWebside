@@ -83,7 +83,8 @@ public class MySqlService
         {
             connection.Open(); //打开数据库连接
 
-            var selectQuery = $"SELECT {outputType} FROM {table} WHERE {searchType} = '{searchData}' ORDER BY Id DESC";
+            //var selectQuery = $"SELECT {outputType} FROM {table} WHERE {searchType} = '{searchData}' ORDER BY Id DESC";
+            var selectQuery = $"SELECT {outputType} FROM `{table}` WHERE {searchType} = '{searchData}'";
             using (var selectCommand = new MySqlCommand(selectQuery, connection))
             {
                 using (var reader = selectCommand.ExecuteReader())

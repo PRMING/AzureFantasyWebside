@@ -63,7 +63,7 @@
 
 /* 搜索输入框 */
 .main-searchdiv input {
-    width: calc(100% - 160px);
+    width: calc(100%);
     height: 36px;
     font-size: 18px;
     color: #18191c;
@@ -81,7 +81,6 @@
     color: #ffffff;
     background: #00aeec;
     border: 1px solid #00aeec;
-    padding: 0 auto;
     border-radius: 6px;
     line-height: 1;
     transition-duration: .2s;
