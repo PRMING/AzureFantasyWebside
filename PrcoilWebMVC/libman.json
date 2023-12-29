@@ -3,7 +3,7 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "axios@1.6.2",
+      "library": "axios@1.6.3",
       "destination": "wwwroot/lib/axios/"
     },
     {

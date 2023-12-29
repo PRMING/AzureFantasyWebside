@@ -53,7 +53,7 @@ public class MySqlService
         }
     }
 
-    public void MySqlInsertOne(string into1, string table, string? value1)
+    public void MySqlInsert1(string into1, string table, string? value1)
     {
         var connectionString =
             $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
@@ -66,6 +66,27 @@ public class MySqlService
             using (var cmd = new MySqlCommand(sql, connection))
             {
                 cmd.Parameters.AddWithValue("@值1", $"{value1}");
+                cmd.ExecuteNonQuery();
+
+                connection.Close(); //关闭连接
+            }
+        }
+    }
+    
+    public void MySqlInsert2(string into1,string into2, string table, string? value1, string? value2)
+    {
+        var connectionString =
+            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open(); //打开数据库连接
+
+            var sql = $"INSERT INTO {table} ({into1},{into2}) VALUES (@值1,@值2)";
+            using (var cmd = new MySqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@值1", $"{value1}");
+                cmd.Parameters.AddWithValue("@值2", $"{value2}");
                 cmd.ExecuteNonQuery();
 
                 connection.Close(); //关闭连接

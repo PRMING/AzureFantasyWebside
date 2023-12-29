@@ -74,6 +74,8 @@ public class LoginRegisterController : ControllerBase
             var username = userRegisterData.Username;
             var password = userRegisterData.Password;
             var recaptchaToken = userRegisterData.RecaptchaToken;
+            //未设置email
+            var email = "";
             
             //reCaptcha验证:
             // 验证秘钥
@@ -102,7 +104,7 @@ public class LoginRegisterController : ControllerBase
             }
 
             // 处理结果
-            if (result < 0.7)
+            if (result < 0.5)
             {
                 return Ok(new { message = "验证不通过" });
             }
@@ -110,10 +112,7 @@ public class LoginRegisterController : ControllerBase
             // {
             //     Console.WriteLine("Failed to send HTTP POST request.");
             // }
-
-
-            //未设置email
-            var email = "";
+            
 
             //如果找不到账户:
             if ("DataNotFound" == mySqlService.MySqlSelect("password", "cellphone", cellphone, DefaultSelectTable))

@@ -16,7 +16,11 @@
             </svg>
         </div>
         <input id="search-input" value="" type="text" placeholder="输入关键字搜索" required>
-        <button id="search-button">搜索</button>
+        <button id="search-button"
+                class="g-recaptcha"
+                data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc" 
+                data-callback='onSubmit' 
+                data-action='submit'>搜索</button>
          
     </div>
 </div>
@@ -44,5 +48,13 @@
 
 @section Scripts
 {
+    <script src="https://recaptcha.net/recaptcha/api.js"></script>
     <script src="~/js/score-select.js"></script>
+    <script>
+            function onSubmit(token) {
+                console.log(token)
+                search(token);
+                // document.getElementById("demo-form").Register();
+            }
+    </script>
 }

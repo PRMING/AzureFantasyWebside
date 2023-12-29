@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     // 注册
-    window.register = function Register(recaptcha_token) {
+    window.register = function (recaptcha_token) {
         // 阻止默认的表单提交行为
         // event.preventDefault()
 
