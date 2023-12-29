@@ -1,0 +1,22 @@
+﻿<header>
+    <div class="header__user-title">
+        <a class="user-title__link" asp-area="" asp-controller="Home" asp-action="Index">
+            <h1 class="user-title-link__title">@ViewData["h1"]</h1>
+        </a>
+        <a id="userTitleLink" class="user-title__link" asp-area="" asp-controller="MyAccount" asp-action="Index">
+            <img id="title-avatar" class="user-title-link__avatar" src="" alt="头像">
+        </a>
+    </div>
+    <ul class="header__ul">
+        <li class="header-ul__li">
+            <a class="header-ul-li__link" asp-area="" asp-controller="LoginReg" asp-action="Index">登录</a>
+        </li>
+        <li class="header-ul__li">
+            <a class="header-ul-li__link" asp-area="" asp-controller="ScoreSelect" asp-action="Index">成绩查询</a>
+        </li>
+    </ul>
+</header>
+@* 占位div *@
+<div>
+    <div style="height: 56px;"></div>
+</div>

@@ -1,0 +1,113 @@
+@{
+    ViewData["Title"] = "欢迎来到 Prcoil";
+    ViewData["h1"] = "Prcoil";
+}
+
+@*
+命名规范
+class: BEM命名[ block-block__element-element__modifier-modifier ]块 元素 修饰符
+id: 元素命名[ element-element ]元素
+js变量: 小驼峰命名[ elementElement ]元素
+*@
+
+<div>
+    @* 登录 *@
+    <div id="login-box" class="main__login-reg-box">
+        @* 登录标题 *@
+        <h2 class="login-reg-box__title">欢迎来到 Prcoil</h2>
+        @* 登录-注册选择 *@
+        <div class="login-reg-box__tab">
+            <div class="tab__item tab__item__active"> 登录 </div>
+            @* 中间分隔线 *@
+            <div class="tab__line"></div>
+            <div id="tab-reg" class="tab__item"> 注册 </div>
+        </div>
+        @* 登录表单 *@
+        <form id="login-form">
+            @* 登录-注册输入框 *@
+            <div class="login-reg-box__input-box login-reg-box__input-box__username flex-row">
+                <div class="input-box__title">账号</div>
+                <input id="login-username" class="input-box__input" value="" type="text" placeholder="请输入账号" required>
+            </div>
+            <div class="login-reg-box__input-box login-reg-box__input-box__password-radiusBLR8 flex-row">
+                <div class="input-box__title">密码</div>
+                <input id="login-password" class="input-box__input" value="" type="password" placeholder="请输入密码"
+                    required>
+            </div>
+            @* 提交按钮 *@
+            <div class="login-reg-box__button-box">
+                <button class="button-box__button__color-white" id="forgot-button">忘记密码</button>
+                <button class="button-box__button__color-blue" id="login-button">登录</button>
+            </div>
+        </form>
+    </div>
+
+    @* 注册 默认display-none *@
+    <div id="reg-box" class="main__login-reg-box display-none">
+        @* 注册标题 *@
+        <h2 class="login-reg-box__title">欢迎来到 Prcoil</h2>
+        @* 登录-注册选择 *@
+        <div class="login-reg-box__tab">
+            <div id="tab-login" class="tab__item"> 登录 </div>
+            @* 中间分隔线 *@
+            <div class="tab__line"></div>
+            <div class="tab__item tab__item__active"> 注册 </div>
+        </div>
+        @* 注册表单 *@
+        <form id="reg-form">
+            @* 登录-注册输入框 *@
+            <div class="login-reg-box__input-box login-reg-box__input-box__username flex-row">
+                <div class="input-box__title">用户名</div>
+                <input id="reg-username" class="input-box__input" value="" type="text" placeholder="4-6位数字或英文字母"
+                    required>
+            </div>
+            <div class="login-reg-box__input-box login-reg-box__input-box__password-radius0 flex-row">
+                <div class="input-box__title">手机号</div>
+                <input id="reg-phone" class="input-box__input" value="" type="text" placeholder="11位中国大陆手机号" required>
+            </div>
+            <div class="login-reg-box__input-box login-reg-box__input-box__password-radius0 flex-row">
+                <div class="input-box__title">密码</div>
+                <input id="reg-password" class="input-box__input" value="" type="password" placeholder="6-16位数字与英文字母组合"
+                    required>
+            </div>
+            <div class="login-reg-box__input-box login-reg-box__input-box__password-radiusBLR8 flex-row">
+                <div class="input-box__title">密码</div>
+                <input id="reg-password-again" class="input-box__input" value="" type="password" placeholder="请再次输入密码"
+                    required>
+            </div>
+            @* 提交按钮 *@
+            <div class="login-reg-box__button-box">
+                <button class="button-box__button__color-white" id="other-button">其他</button>
+                <button class="button-box__button__color-blue g-recaptcha" 
+                        data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc" 
+                        data-callback='onSubmit' 
+                        data-action='submit' 
+                        id="reg-button">注册</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="error-box" class="main__error-box main__error-box__animation display-none">
+        <p class="error-box__message">密码错误！</p>
+    </div>
+</div>
+
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/login-reg.css" asp-append-version="true" />
+}
+
+@section Scripts
+{
+    <script src="https://recaptcha.net/recaptcha/api.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/js/login-reg.js"></script>
+    <script>
+        function onSubmit(token) {
+            console.log(token)
+            register(token);
+            // document.getElementById("demo-form").Register();
+        }
+     </script>
+}

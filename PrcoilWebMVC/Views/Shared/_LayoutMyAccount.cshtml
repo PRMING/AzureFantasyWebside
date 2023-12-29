@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MyAccount/MyAccountLayout.css" asp-append-version="true" />
+    @* View引入css *@
+    @await RenderSectionAsync("Styles", false)
+</head>
+
+<body>
+
+    @* header 引入/Layout/里面的PartialView *@
+    @await Html.PartialAsync("PartialView/Layout/_HeaderPartialView")
+
+    <main>
+        @* 侧边栏 *@
+        <div class="main__sidebar">
+            <ul>
+                <li class="sidebar__item sidebar__item__action">
+                    <a class="sidebar-item__link" asp-area="" asp-controller="MyAccount" asp-action="Index">首页</a>
+                </li>
+                <li class="sidebar__item">
+                    <a class="sidebar-item__link" asp-area="" asp-controller="MyAccount"
+                       asp-action="PersonalInfo">个人信息</a>
+                </li>
+            </ul>
+        </div>
+        <div id="content-PartialViewContainer" class="main__content">
+            @RenderBody()
+        </div>
+    </main>
+
+    @* Axios *@
+    <script src="~/lib/axios/axios.min.js"></script>
+    @* layout默认js *@
+    <script src="~/js/layout.js"></script>
+    <script src="~/js/MyAccount/MyAccountLayout.js"></script>
+    @* View引入js *@
+    @await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

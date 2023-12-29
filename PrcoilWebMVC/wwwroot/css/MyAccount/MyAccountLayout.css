@@ -1,0 +1,47 @@
+﻿main {
+    /* 对齐 */
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+/* 侧边栏 */
+.main__sidebar {
+    /* 定位 */
+    height: 100%;
+    width: 200px;
+    padding-top: 20px;
+    /* 样式 */
+}
+.sidebar__item {
+    /* 定位 */
+    width: 100%;
+    height: 44px;
+    /* 对齐 */
+    text-align: center;
+    /* 样式 */
+    list-style-type: none;
+    border-radius: 0 50px 50px 0;
+    border: 0;
+    background-color: #fff;
+}
+/* a标签 */
+.sidebar-item__link {
+    height: 100%;
+    width: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #000;
+    text-decoration: none;
+}
+.sidebar__item__action {
+    background-color: #c2e7ff;
+}
+/* 内容 */
+.main__content {
+    padding-top: 20px;
+    margin: 0 24px;
+    flex: 1;
+}

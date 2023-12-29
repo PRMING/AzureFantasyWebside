@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&family=ZCOOL+XiaoWei&display=swap');
+
+/* 后期必须清除下面两个flex */
+.flex-row {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.display-none {
+    display: none;
+}
+
+* {
+    /* 定位 */
+    margin: 0;
+    padding: 0;
+    /* 布局 */
+    box-sizing: border-box;
+    /* 样式 */
+    /* border: 1px solid; */
+    /* font-family: 'Noto Sans SC', sans-serif; */
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+}
+
+body {
+    /* 定位 */
+    height: 100vh;
+    min-width: 330px;
+    /* 布局 */
+    display: flex;
+    flex-direction: column;
+    /* 样式 */
+    background-color: #fcfcfc;
+}
+
+/* 导航栏 */
+header {
+    /* 定位 */
+    height: 56px;
+    min-width: 330px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* 布局 */
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    align-items: center;
+    /* 样式 */
+    border-bottom: 1px solid #E6E6E6;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.05);
+    /* 模糊 */
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    color: #000;
+}
+.header__user-title{
+    /* 定位 */
+    height: 100%;
+    /* 对齐 */
+    display: flex;
+}
+/* 导航栏a标签 */
+.user-title__link{
+    /* 定位 */
+    height: 100%;
+    /* 对齐 */
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    /* 样式 */
+    text-decoration: none;
+    box-sizing: border-box;
+    text-align: center;
+}
+/* 导航栏标题 */
+.user-title-link__title{
+    /* 定位 */
+    margin-right: 20px;
+    /* 样式 */
+    color: #000;
+    font-weight: 400;
+    font-size: 30px;
+}
+/* 头像 */
+.user-title-link__avatar{
+    /* 定位 */
+    width: 40px;
+    height: 40px;
+    /* 样式 */
+    border-radius: 100%;
+}
+
+
+
+/* 网站导航链接 */
+/* 列表 */
+.header__ul {
+    /* 定位 */
+    height: 100%;
+    /* 布局 */
+    display: flex;
+}
+/* 列表li */
+.header-ul__li{
+    height: 100%;
+    list-style-type: none;
+}
+/* 链接a标签 */
+.header-ul-li__link {
+    /* 定位 */
+    height: 100%;
+    width: auto;
+    padding: 0 10px;
+    /* 布局 */
+    display: flex;
+    align-items: center;
+    transition: .2s;
+    font-size: 17px;
+    color: #000;
+    text-decoration: none;
+}
+.header-ul-li__link:hover {
+    background: rgba(227, 229, 231, 0.5);
+}
+
+/* 主内容 */
+main {
+    /* 布局 */
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+    /* 内部滚动 */
+    /* overflow: auto; */
+    /* 换行重要 */
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 400px) {
+
+    /* 标题 */
+    .header__title {
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    .header-ul-li__link {
+        font-size: 15px;
+    }
+}

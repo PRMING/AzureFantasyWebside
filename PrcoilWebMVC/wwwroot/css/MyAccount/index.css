@@ -1,0 +1,24 @@
+﻿/* 基本 */
+.content__basic {
+    /* 对齐 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 头像 */
+.basic__avatar {
+    /* 定位 */
+    width: 96px;
+    /* 样式 */
+    border-radius: 100%;
+}
+
+/* 欢迎语句 */
+.basic__welcome {
+    /* 定位 */
+    margin: 20px 0;
+    /* 样式 */
+    font-weight: 400;
+    font-size: 28px;
+}

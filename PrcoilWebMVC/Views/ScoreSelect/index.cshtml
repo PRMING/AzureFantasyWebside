@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Prcoil - 查询";
+    ViewData["h1"] = "Prcoil 查询";
+}
+
+<div id="search-box" class="search-box">
+    <h2 class="main-search-title">Prcoil丨成绩查询系统</h2>
+    @* <p class="main-search-p">数据来源: 高2022级2023年高二上期第一次月考</p> *@
+    <p class="main-search-p">数据来源: 高2022级2023年高二上期半期考试</p>
+    <div class="main-searchdiv flex-row">
+        <div class="main-searchdiv-icon">
+            <svg>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M17.345 15.7c.293.292.13.572-.152.863-.043.065-.097.119-.14.162-.282.248-.607.399-.868.14l-3.5-3.483a6.938 6.938 0 0 1-4.238 1.445c-3.826 0-6.947-3.096-6.947-6.914C1.5 4.106 4.61 1 8.447 1c3.826 0 6.947 3.095 6.947 6.913a6.908 6.908 0 0 1-1.528 4.325l3.48 3.462ZM3.136 7.903c0 2.912 2.385 5.274 5.3 5.274 2.916 0 5.3-2.362 5.3-5.274s-2.384-5.274-5.3-5.274c-2.926 0-5.3 2.372-5.3 5.274Z"
+                    fill="currentColor"></path>
+            </svg>
+        </div>
+        <input id="search-input" value="" type="text" placeholder="输入关键字搜索" required>
+        <button id="search-button">搜索</button>
+         
+    </div>
+</div>
+<div id="result" class="main-cardBox display-none">
+    <div class="main-cardBox-backdiv">
+        <button class="main-cardBox-backdiv-button" onclick="location.reload();">
+            <?xml version="1.0" encoding="UTF-8"?><svg width="14" height="14" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.9998 8L6 14L12.9998 21" stroke="#333" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path
+                    d="M6 14H28.9938C35.8768 14 41.7221 19.6204 41.9904 26.5C42.2739 33.7696 36.2671 40 28.9938 40H11.9984"
+                    stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>返回</span>
+        </button>
+    </div>
+</div>
+
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/score-select.css" asp-append-version="true" />
+}
+
+@section Scripts
+{
+    <script src="~/js/score-select.js"></script>
+}

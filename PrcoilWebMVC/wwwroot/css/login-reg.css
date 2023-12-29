@@ -1,0 +1,234 @@
+/* main页面 */
+main {
+    /* 定位 */
+    padding-top: 20vh;
+    /* 对齐 */
+    /* main上下取消居中 */
+    align-content: flex-start;
+}
+
+ /* 搜索标题 */
+.login-reg-box__title {
+    /* 定位 */
+    margin-bottom: 15px;
+    /* 对齐 */
+    text-align: center;
+    /* 外观 */
+    color: #18191c;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+/* 登录注册切换 */
+.login-reg-box__tab {
+    /* 定位 */
+    margin-bottom: 15px;
+    /* 对齐 */
+    display: flex;
+    justify-content: center;
+    /* 外观 */
+    font-size: 18px;
+    color: #505050;
+}
+/* 登录-注册切换div */
+.tab__item {
+    /* 外观 */
+    cursor: pointer;
+}
+/* 分割线 */
+.tab__line {
+    /* 定位 */
+    width: 1px;
+    margin: 0 21px;
+    /* 外观 */
+    background-color: #e3e5e7;
+}
+/* 选择颜色 */
+.tab__item__active {
+    color: #4fa5d9;
+}
+
+/* 账号-密码输入框 */
+.login-reg-box__input-box {
+    /* 定位 */
+    padding: 5px;
+    width: 478px;
+    height: 44px;
+    /* 对齐 */
+    justify-content: space-between;
+    align-items: center;
+    /* 外观 */
+    background: #F6F7F8;
+    border: 1px solid #F1F2F3;
+    transition: all .2s;
+}
+.login-reg-box__input-box:hover {
+    /* 外观 */
+    background-color: #fff;
+}
+/* 输入框聚焦时的样式 */
+.login-reg-box__input-box:focus-within {
+    /* 外观 */
+    background-color: #fff;
+    border: 1px solid #00AEEC;
+}
+
+/* 账号输入框圆角上左右8 */
+.login-reg-box__input-box__username {
+    /* 外观 */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+/* 密码输入框圆角0 */
+.login-reg-box__input-box__password-radius0 {
+    /* 外观 */
+    border-radius: 0;
+}
+/* 密码输入框圆角下左右8 */
+.login-reg-box__input-box__password-radiusBLR8 {
+    /* 外观 */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* 登录-注册标题 */
+.input-box__title {
+    /* 定位 */
+    width: 80px;
+    height: 100%;
+    /* 对齐 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 外观 */
+    font-size: 14px;
+}
+/* 登录-注册输入框 */
+.input-box__input {
+    /* 定位 */
+    width: 100%;
+    height: 36px;
+    /* 外观 */
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+/* 登录-注册输入框placeholder字体颜色 */
+.input-box__input::placeholder{
+    /* 外观 */
+    color: #c0c0c0;
+}
+
+
+/* 提交按钮 */
+.login-reg-box__button-box {
+    /* 定位 */
+    height: 40px;
+    margin-top: 10px;
+    /* 对齐 */
+    display: flex;
+    justify-content: space-between;
+}
+/* 白色按钮 */
+.button-box__button__color-white {
+    /* 定位 */
+    width: 48%;
+    height: 100%;
+    /* 外观 */
+    font-size: 14px;
+    color: #18191c;
+    background: #fff;
+    border: 1px solid #e3e5e7;
+    border-radius: 8px;
+    line-height: 1;
+    transition-duration: .2s;
+    cursor: pointer;
+}
+.button-box__button__color-white:hover {
+    /* 外观 */
+    color: #18191c;
+    background: #e3e5e7;
+    border: 1px solid #e3e5e7;
+}
+/* 蓝色按钮 */
+.button-box__button__color-blue {
+    /* 定位 */
+    width: 48%;
+    height: 100%;
+    /* 对齐 */
+    line-height: 1;
+    /* 外观 */
+    font-size: 14px;
+    color: #fff;
+    background: #00aeec;
+    border: 1px solid #00aeec;
+    border-radius: 8px;
+    transition-duration: .2s;
+    cursor: pointer;
+}
+.button-box__button__color-blue:hover {
+    /* 外观 */
+    color: #fff;
+    background: #40c5f1;
+    border: 1px solid #40c5f1;
+}
+
+.main__error-box{
+    /* 定位 */
+    width: 478px;
+    margin-top: 10px;
+    /* 外观 */
+    border-radius: 8px;
+    border: 1px solid #ffc1c0;
+    background-color: #ffebe9;
+    transition: all .2s;
+    /* 媒体查询 */
+    /*@media screen and (max-width: 500px) {*/
+    /*    width: 300px;*/
+    /*}*/
+}
+/* 动画样式 */
+.main__error-box__animation {
+    /* 使用 forwards 使动画停在最后一帧 */
+    animation: important .2s forwards;
+}
+@keyframes important {
+    0% {
+        border-width: 5px;
+    }
+    50% {
+        border-width: 3px;
+    }
+    100% {
+        border-width: 1px;
+    }
+}
+
+.error-box__message{
+    /* 定位 */
+    height: 40px;
+    /* 对齐 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 外观 */
+    font-size: 14px;
+}
+
+
+
+/* 媒体查询 */
+@media screen and (max-width: 500px) {
+    .main__error-box{
+        width: 300px;
+    }
+    
+    .login-reg-box__input-box {
+        width: 300px;
+    }
+
+    .login-reg-box__input-box button {
+        width: 80px;
+    }
+}

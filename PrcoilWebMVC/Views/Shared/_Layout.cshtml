@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    @* View引入css *@
+    @await RenderSectionAsync("Styles", false)
+</head>
+
+<body>
+
+@* header 引入/Layout/里面的PartialView *@
+@await Html.PartialAsync("PartialView/Layout/_HeaderPartialView")
+
+<main>
+    @RenderBody()
+</main>
+
+@* Axios *@
+<script src="~/lib/axios/axios.min.js"></script>
+@* layout默认js *@
+<script src="~/js/layout.js"></script>
+@* View引入js *@
+@await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>
