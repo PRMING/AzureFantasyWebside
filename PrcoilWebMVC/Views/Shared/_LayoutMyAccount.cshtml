@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/css/MyAccount/MyAccountLayout.css" asp-append-version="true" />
     @* View引入css *@
     @await RenderSectionAsync("Styles", false)
+    @await Html.PartialAsync("PartialView/Layout/_HeadPartialView")
 </head>
 
 <body>

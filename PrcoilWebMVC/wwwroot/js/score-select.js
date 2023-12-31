@@ -1,20 +1,10 @@
 // 等待DOM准备就绪
 document.addEventListener('DOMContentLoaded', function () {
     // 选择元素
-    const searchBox = document.getElementById('search-box');
-    const searchButton = document.getElementById('search-button');
-    const searchInput = document.getElementById('search-input');
-    const resultDiv = document.getElementById("result");
-
-    const getLocalIP = () => {
-        const host = window.location.host;
-        const protocol = window.location.protocol;
-        const parts = host.split(':');
-        return `${protocol}//${parts[0]}`;
-    }
-
-    const localIP = getLocalIP();
-    console.log(localIP);
+    const searchBox = document.getElementById('search-box')
+    const searchButton = document.getElementById('search-button')
+    const searchInput = document.getElementById('search-input')
+    const resultDiv = document.getElementById("result")
     
     window.search = function (recaptcha_token) {
         // 阻止默认的表单提交行为
@@ -24,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchValue = searchInput.value;
 
         if (searchValue === "") {
-            alert("请输入关键字");
+            alert("请输入关键字")
             return false
         }
 
@@ -37,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get(`/GetStudentData/${searchValue}&${recaptcha_token}&${ip}`)
             .then(function (response) {
                 // 处理成功的响应（例如，重定向或显示成功消息）
-                console.log(response.data)
+                // console.log(response.data)
                 const data = response.data
                 
                 if (data.message === '验证不通过') {

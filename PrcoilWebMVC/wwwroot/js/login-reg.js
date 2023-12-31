@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 console.error('Error:', error);
                             }
                         });
+                        localStorage.setItem("loginStatus", "true");
                         window.location.href = response.data.redirectUrl;
                     }
                     else if (response.data.message === "未找到账户") {

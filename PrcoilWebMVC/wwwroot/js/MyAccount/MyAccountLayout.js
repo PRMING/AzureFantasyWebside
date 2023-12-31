@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
         axios.get('/UserLogout')
             .then(function (response) {
                 if (response.data.redirectUrl) {
-                    localStorage.removeItem("avatar");
-                    window.location.href = response.data.redirectUrl;
+                    localStorage.setItem("avatar", "/images/avatar.jpg")
+                    localStorage.setItem("loginStatus","false")
+                    window.location.href = response.data.redirectUrl
                 }
             })
             .catch(function (error) {

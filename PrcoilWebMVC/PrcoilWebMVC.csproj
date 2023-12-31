@@ -19,4 +19,7 @@
   <ItemGroup>
     <Folder Include="Views\Shared\PartialView\" />
   </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\NotLoggedIn\index.cshtml" />
+  </ItemGroup>
 </Project>

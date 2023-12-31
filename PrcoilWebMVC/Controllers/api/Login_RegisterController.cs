@@ -53,8 +53,7 @@ public class LoginRegisterController : ControllerBase
         var userPrincipal = new ClaimsPrincipal(new ClaimsIdentity(claims, "Customer"));
         HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal, new AuthenticationProperties
         {
-            ExpiresUtc = DateTime.UtcNow.AddMinutes(30),//过期时间：30分钟
-
+            ExpiresUtc = DateTime.UtcNow.AddDays(31),//过期时间：31天
         }).Wait();
         // var user = HttpContext.User;
 

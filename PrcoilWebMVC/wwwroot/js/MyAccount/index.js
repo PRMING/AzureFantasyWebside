@@ -8,7 +8,7 @@ const basicWelcome = document.getElementById('basicWelcome')
 axios.get('/GetWebUsersInfo')
     .then(function (response) {
         const data = response.data;
-        console.log(data);
+        // console.log(data);
         basicWelcome.innerText = `欢迎使用，${data.username}`
         
     })

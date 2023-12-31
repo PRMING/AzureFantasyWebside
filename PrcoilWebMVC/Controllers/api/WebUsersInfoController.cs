@@ -5,18 +5,14 @@ using PrcoilWebMVC.Models;
 
 namespace PrcoilWebMVC.Controllers.api;
 
-// JWT验证
 [Authorize]
-//路由是直接函数名字
 [Route("")]
-//[Route("[controller]/[action]")]
 [ApiController]
 public class WebUsersInfoController : ControllerBase
 {
     private const string DefaultSelectTable = "web_users_data";
 
     //查询---------------------------------------------------------------------------------------------------------------------
-    //启用跨域
     // [EnableCors("AnotherPolicy")]
     [HttpGet("GetWebUsersInfo")] //!!!跨域必须指定路由模板不同名称
     public IActionResult GetWebUsersInfo()
