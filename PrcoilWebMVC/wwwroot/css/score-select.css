@@ -187,3 +187,34 @@ main{
         width: 80px;
     }
 }
+
+
+@media (prefers-color-scheme: light) { /*light : 浅色*/
+}
+@media (prefers-color-scheme: dark) { /*dark : 深色*/
+    /* 数据来源 */
+    .main-search-p {
+        transition: .5s;
+        color: #a2a7ae;
+    }
+
+    .main-searchdiv{
+        background: #000;
+        border: 1px solid #17181a;
+    }
+
+    .main-searchdiv:hover {
+        background-color: #17181a;
+    }
+
+    .main-searchdiv:focus-within {
+        /* 输入框聚焦时的样式 */
+        background-color: #17181a;
+        border: 1px solid #00AEEC;
+    }
+
+    .main-searchdiv input{
+        color: #fff;
+    }
+}
+

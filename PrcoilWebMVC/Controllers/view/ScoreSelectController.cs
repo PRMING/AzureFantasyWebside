@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PrcoilWebMVC.Controllers.view
+namespace AzureFantasy_Web.Controllers.view
 {
     public class ScoreSelectController : Controller
     {

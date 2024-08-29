@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let re = new RegExp(reg)
             return re.test(usn)
         }
-        
-        
+
+
 
         // 检查手机号
         if (!checkUsn(username)) {
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             Cellphone: phone,
             Username: username,
             Password: password,
-            RecaptchaToken : recaptcha_token,
+            RecaptchaToken: recaptcha_token,
         })
             .then(response => {
                 //弹出框

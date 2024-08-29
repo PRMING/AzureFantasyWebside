@@ -1,6 +1,6 @@
 @{
-    ViewData["Title"] = "欢迎来到 Prcoil";
-    ViewData["h1"] = "Prcoil";
+    ViewData["Title"] = "AzureFantasy - 登录";
+    ViewData["h1"] = "AzureFantasy";
 }
 
 @*
@@ -78,11 +78,9 @@ js变量: 小驼峰命名[ elementElement ]元素
             @* 提交按钮 *@
             <div class="login-reg-box__button-box">
                 <button class="button-box__button__color-white" id="other-button">其他</button>
-                <button id="reg-button" 
-                        class="button-box__button__color-blue g-recaptcha" 
-                        data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc" 
-                        data-callback='onSubmit' 
-                        data-action='submit'>注册</button>
+                <button id="reg-button" class="button-box__button__color-blue g-recaptcha"
+                    data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc" data-callback='onSubmit'
+                    data-action='submit'>注册</button>
             </div>
         </form>
     </div>
@@ -109,5 +107,5 @@ js变量: 小驼峰命名[ elementElement ]元素
             register(token);
             // document.getElementById("demo-form").Register();
         }
-     </script>
+    </script>
 }

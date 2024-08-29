@@ -1,4 +1,4 @@
-namespace PrcoilWebMVC.Models;
+namespace AzureFantasy_Web.Models;
 
 public class ErrorViewModel
 {

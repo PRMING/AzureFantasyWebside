@@ -1,20 +1,20 @@
 ﻿using MySql.Data.MySqlClient;
 
-namespace PrcoilWebMVC.Models;
+namespace AzureFantasy_Web.Models;
 
 public class MySqlService
 {
     private readonly string? _database;
     private readonly string? _password;
     private readonly string? _serverip;
-    private readonly string? _uid;
+    private readonly string? _username;
 
     //构造函数
     public MySqlService(string serverip, string database, string uid, string password)
     {
         _serverip = serverip;
         _database = database;
-        _uid = uid;
+        _username = uid;
         _password = password;
     }
 
@@ -23,7 +23,7 @@ public class MySqlService
     {
         _serverip = "127.0.0.1";
         _database = "serverdata";
-        _uid = "root";
+        _username = "root";
         _password = "248655";
     }
 
@@ -33,7 +33,7 @@ public class MySqlService
         string? value1, string? value2, string? value3, string? value4)
     {
         var connectionString =
-            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            $"Server={_serverip};Database={_database};User Id={_username};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
 
         using (var connection = new MySqlConnection(connectionString))
         {
@@ -56,7 +56,7 @@ public class MySqlService
     public void MySqlInsert1(string into1, string table, string? value1)
     {
         var connectionString =
-            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            $"Server={_serverip};Database={_database};User Id={_username};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
 
         using (var connection = new MySqlConnection(connectionString))
         {
@@ -72,11 +72,11 @@ public class MySqlService
             }
         }
     }
-    
-    public void MySqlInsert2(string into1,string into2, string table, string? value1, string? value2)
+
+    public void MySqlInsert2(string into1, string into2, string table, string? value1, string? value2)
     {
         var connectionString =
-            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            $"Server={_serverip};Database={_database};User Id={_username};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
 
         using (var connection = new MySqlConnection(connectionString))
         {
@@ -98,7 +98,7 @@ public class MySqlService
     public string? MySqlSelect(string outputType, string searchType, string? searchData, string table)
     {
         var connectionString =
-            $"Server={_serverip};Database={_database};User Id={_uid};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
+            $"Server={_serverip};Database={_database};User Id={_username};Password={_password};SslMode = none;allowPublicKeyRetrieval=true;";
 
         using (var connection = new MySqlConnection(connectionString))
         {

@@ -1,12 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Prcoil - 查询";
-    ViewData["h1"] = "Prcoil 查询";
+    ViewData["Title"] = "AzureFantasy - 查询";
+    ViewData["h1"] = "AzureFantasy";
 }
 
 <div id="search-box" class="search-box">
     <h2 class="main-search-title">Prcoil丨成绩查询系统</h2>
     @* <p class="main-search-p">数据来源: 高2022级2023年高二上期第一次月考</p> *@
-    <p class="main-search-p">数据来源: 高2022级2023年高二上期半期考试</p>
+    <p class="main-search-p">数据来源: 高2022级2024年高二上期期末考试</p>
     <div class="main-searchdiv flex-row">
         <div class="main-searchdiv-icon">
             <svg>
@@ -16,12 +16,9 @@
             </svg>
         </div>
         <input id="search-input" value="" type="text" placeholder="输入关键字搜索" required>
-        <button id="search-button"
-                class="g-recaptcha"
-                data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc" 
-                data-callback='onSubmit' 
-                data-action='submit'>搜索</button>
-         
+        <button id="search-button" class="g-recaptcha" data-sitekey="6LfZDdooAAAAAH_y2fz6lIahQ_8OqqLkCwjm0jLc"
+            data-callback='onSubmit' data-action='submit'>搜索</button>
+
     </div>
 </div>
 <div id="result" class="main-cardBox display-none">
@@ -51,10 +48,10 @@
     <script src="https://recaptcha.net/recaptcha/api.js"></script>
     <script src="~/js/score-select.js"></script>
     <script>
-            function onSubmit(token) {
-                // console.log(token)
-                search(token);
-                // document.getElementById("demo-form").Register();
-            }
+        function onSubmit(token) {
+            // console.log(token)
+            search(token);
+            // document.getElementById("demo-form").Register();
+        }
     </script>
 }

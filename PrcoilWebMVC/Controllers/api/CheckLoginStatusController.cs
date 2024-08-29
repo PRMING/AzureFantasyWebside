@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PrcoilWebMVC.Controllers.api;
+namespace AzureFantasy_Web.Controllers.api;
 
 //路由是直接函数名字
 [Route("")]

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
+﻿using AzureFantasy_Web.Models.Data;
 using Newtonsoft.Json;
-using PrcoilWebMVC.Models.Data;
 
 public class HttpClientServer
 {

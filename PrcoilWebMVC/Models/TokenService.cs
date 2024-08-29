@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 
-namespace PrcoilWebMVC.Models;
+namespace AzureFantasy_Web.Models;
 
 public class TokenService
 {
@@ -32,7 +32,7 @@ public class TokenService
             expires: DateTime.Now.AddDays(30),
             signingCredentials: credentials
         );
-                
+
 
         var tokenHandler = new JwtSecurityTokenHandler();
         return tokenHandler.WriteToken(token);

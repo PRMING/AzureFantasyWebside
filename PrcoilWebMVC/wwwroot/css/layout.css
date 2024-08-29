@@ -34,6 +34,7 @@ body {
     display: flex;
     flex-direction: column;
     /* 样式 */
+    transition: .5s;
     background-color: #fcfcfc;
 }
 
@@ -54,6 +55,7 @@ header {
     z-index: 1;
     align-items: center;
     /* 样式 */
+    transition: .5s;
     border-bottom: 1px solid #E6E6E6;
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.05);
     /* 模糊 */
@@ -67,6 +69,8 @@ header {
     height: 100%;
     /* 对齐 */
     display: flex;
+    /* 样式 */
+    transition: .5s;
 }
 /* 导航栏a标签 */
 .user-title__link{
@@ -155,5 +159,35 @@ main {
 
     .header-ul-li__link {
         font-size: 15px;
+    }
+}
+
+
+
+
+
+/* 颜色主题切换 */
+@media (prefers-color-scheme: light) { /*light : 浅色*/
+}
+@media (prefers-color-scheme: dark) { /*dark : 深色*/
+    body{
+        transition: .5s;
+        background-color: rgb(31,32,34);
+    }
+
+    header {
+        transition: .5s;
+        border-bottom: 1px solid #000;
+        background: rgba(21, 21, 21, 0.24);
+    }
+
+    .user-title-link__title{
+        transition: .5s;
+        color: #fff;
+    }
+
+    .header-ul-li__link{
+        transition: .5s;
+        color: #fff;
     }
 }

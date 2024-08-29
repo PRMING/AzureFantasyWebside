@@ -54,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 const resultHtml = `
                 <!--  -->
-                <div style="background-image: url('${data.avatar}'); width: 200px; height: 218px; margin: 0 auto 20px;" class="main-cardBox-child">
-                </div>
+                <!-- <div style="background-image: url('${data.avatar}'); width: 200px; height: 218px; margin: 0 auto 20px;" class="main-cardBox-child">
+                </div> -->
+                
                 <div style="background-color: #f8f9fa;" class="main-cardBox-child">
                 <h2>${data.class}班 ${data.name}</h2>
                 <p>总分数: ${data.score}</p>

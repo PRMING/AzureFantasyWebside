@@ -1,21 +1,21 @@
-﻿namespace PrcoilWebMVC.Models.Data;
+﻿namespace AzureFantasy_Web.Models.Data;
 
 public class ReCaptchaData
 {
     /// <summary>
     /// 
     /// </summary>
-    public bool success { get;set; }
+    public bool success { get; set; }
 
     /// <summary>
     /// 
     /// </summary>
-    public DateTime challenge_ts { get;set; }
+    public DateTime challenge_ts { get; set; }
 
     /// <summary>
     /// 
     /// </summary>
-    public string hostname { get;set; }
+    public string hostname { get; set; }
 
     /// <summary>
     /// 
@@ -25,5 +25,5 @@ public class ReCaptchaData
     /// <summary>
     /// 
     /// </summary>
-    public string action { get;set; }
+    public string action { get; set; }
 }

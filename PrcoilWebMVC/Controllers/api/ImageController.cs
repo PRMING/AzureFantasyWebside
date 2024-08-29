@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PrcoilWebMVC.Controllers.api;
+namespace AzureFantasy_Web.Controllers.api;
 
 //路由是直接函数名字
 [Route("")]
@@ -15,7 +15,7 @@ public class ImageController : ControllerBase
     {
         return Ok($"https://images.prcoil.eu.org/images/PersonalImage/{name}.jpg");
     }
-    
+
     [HttpGet("GetUserImage")]
     public IActionResult UserImage(string id)
     {

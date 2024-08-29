@@ -1,4 +1,4 @@
-﻿namespace PrcoilWebMVC.Models.Data;
+﻿namespace AzureFantasy_Web.Models.Data;
 
 public class UserLoginData
 {

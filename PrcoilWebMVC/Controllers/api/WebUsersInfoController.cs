@@ -1,9 +1,9 @@
-﻿using System.Security.Claims;
+﻿using AzureFantasy_Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PrcoilWebMVC.Models;
+using System.Security.Claims;
 
-namespace PrcoilWebMVC.Controllers.api;
+namespace AzureFantasy_Web.Controllers.api;
 
 [Authorize]
 [Route("")]

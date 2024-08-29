@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using PrcoilWebMVC.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using AzureFantasy_Web.Models;
+using System.Diagnostics;
 
-namespace PrcoilWebMVC.Controllers.view;
+namespace AzureFantasy_Web.Controllers.view;
 
 public class HomeController : Controller
 {

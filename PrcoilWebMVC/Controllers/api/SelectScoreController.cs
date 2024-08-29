@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PrcoilWebMVC.Models;
+using AzureFantasy_Web.Models;
 
-namespace PrcoilWebMVC.Controllers.api;
+namespace AzureFantasy_Web.Controllers.api;
 
 [Route("[action]")]
 [ApiController]
 public class SelectScoreController : ControllerBase
 {
-    private const string DefaultSelectTable = "senior_second_shang_half";
-    
+    private const string DefaultSelectTable = "gaoerqimo";
+
     // [Authorize]
     // [EnableCors("AnotherPolicy")]
     [HttpGet("{name}&{reCaptchaToken}&{ip}")]
     public IActionResult GetStudentData(string? name, string? reCaptchaToken, string? ip)
-    { 
+    {
         if (reCaptchaToken != null)
         {
             //reCaptcha验证:
@@ -49,7 +49,7 @@ public class SelectScoreController : ControllerBase
             }
 
             var mySqlService = new MySqlService();
-            
+
             // 创建一个包含所需值的匿名对象
             if (mySqlService.MySqlSelect("name", "name", name, DefaultSelectTable) == "DataNotFound")
             {
@@ -62,39 +62,39 @@ public class SelectScoreController : ControllerBase
                 Name = mySqlService.MySqlSelect("name", "name", name, DefaultSelectTable),
                 Num = mySqlService.MySqlSelect("num", "name", name, DefaultSelectTable),
                 Score = mySqlService.MySqlSelect("score", "name", name, DefaultSelectTable),
-                Assignscore = mySqlService.MySqlSelect("assignscore", "name", name, DefaultSelectTable),
+                // Assignscore = mySqlService.MySqlSelect("assignscore", "name", name, DefaultSelectTable),
                 Graderanking = mySqlService.MySqlSelect("graderanking", "name", name, DefaultSelectTable),
-                Classranking = mySqlService.MySqlSelect("classranking", "name", name, DefaultSelectTable),
+                // Classranking = mySqlService.MySqlSelect("classranking", "name", name, DefaultSelectTable),
                 Chinese = mySqlService.MySqlSelect("chinese", "name", name, DefaultSelectTable),
-                Chineseranking = mySqlService.MySqlSelect("chineseranking", "name", name, DefaultSelectTable),
+                // Chineseranking = mySqlService.MySqlSelect("chineseranking", "name", name, DefaultSelectTable),
                 Math = mySqlService.MySqlSelect("math", "name", name, DefaultSelectTable),
-                Mathranking = mySqlService.MySqlSelect("mathranking", "name", name, DefaultSelectTable),
+                // Mathranking = mySqlService.MySqlSelect("mathranking", "name", name, DefaultSelectTable),
                 English = mySqlService.MySqlSelect("english", "name", name, DefaultSelectTable),
-                Englishranking = mySqlService.MySqlSelect("englishranking", "name", name, DefaultSelectTable),
+                // Englishranking = mySqlService.MySqlSelect("englishranking", "name", name, DefaultSelectTable),
                 Physics = mySqlService.MySqlSelect("physics", "name", name, DefaultSelectTable),
-                Physicsranking = mySqlService.MySqlSelect("physicsranking", "name", name, DefaultSelectTable),
+                // Physicsranking = mySqlService.MySqlSelect("physicsranking", "name", name, DefaultSelectTable),
                 History = mySqlService.MySqlSelect("history", "name", name, DefaultSelectTable),
-                Historyranking = mySqlService.MySqlSelect("historyranking", "name", name, DefaultSelectTable),
+                // Historyranking = mySqlService.MySqlSelect("historyranking", "name", name, DefaultSelectTable),
                 Chemistry = mySqlService.MySqlSelect("chemistry", "name", name, DefaultSelectTable),
-                Assignchemistry = mySqlService.MySqlSelect("assignchemistry", "name", name, DefaultSelectTable),
-                Chemistryranking = mySqlService.MySqlSelect("chemistryranking", "name", name, DefaultSelectTable),
+                // Assignchemistry = mySqlService.MySqlSelect("assignchemistry", "name", name, DefaultSelectTable),
+                // Chemistryranking = mySqlService.MySqlSelect("chemistryranking", "name", name, DefaultSelectTable),
                 Organism = mySqlService.MySqlSelect("organism", "name", name, DefaultSelectTable),
-                Assignorganism = mySqlService.MySqlSelect("assignorganism", "name", name, DefaultSelectTable),
-                Organismranking = mySqlService.MySqlSelect("organismranking", "name", name, DefaultSelectTable),
+                // Assignorganism = mySqlService.MySqlSelect("assignorganism", "name", name, DefaultSelectTable),
+                // Organismranking = mySqlService.MySqlSelect("organismranking", "name", name, DefaultSelectTable),
                 Politics = mySqlService.MySqlSelect("politics", "name", name, DefaultSelectTable),
-                Assignpolitics = mySqlService.MySqlSelect("assignpolitics", "name", name, DefaultSelectTable),
-                Politicsranking = mySqlService.MySqlSelect("politicsranking", "name", name, DefaultSelectTable),
+                // Assignpolitics = mySqlService.MySqlSelect("assignpolitics", "name", name, DefaultSelectTable),
+                // Politicsranking = mySqlService.MySqlSelect("politicsranking", "name", name, DefaultSelectTable),
                 Geography = mySqlService.MySqlSelect("geography", "name", name, DefaultSelectTable),
-                Assigngeography = mySqlService.MySqlSelect("assigngeography", "name", name, DefaultSelectTable),
-                Geographyranking = mySqlService.MySqlSelect("geographyranking", "name", name, DefaultSelectTable),
+                // Assigngeography = mySqlService.MySqlSelect("assigngeography", "name", name, DefaultSelectTable),
+                // Geographyranking = mySqlService.MySqlSelect("geographyranking", "name", name, DefaultSelectTable),
                 avatar = $"https://prcoilserver-1301443616.cos.ap-chongqing.myqcloud.com/PersonalAvatar/{name}.jpg_img"
             };
-            
-            mySqlService.MySqlInsert2("ip_address","search_who","web_student_info_records",ip,name);
-            
+
+            mySqlService.MySqlInsert2("ip_address", "search_who", "web_student_info_records", ip, name);
+
             return Ok(studentData);
         }
-        
+
         return Ok("服务器错误,注册功能异常");
     }
 }

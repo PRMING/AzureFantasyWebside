@@ -1,13 +1,12 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using PrcoilWebMVC.Models;
-using PrcoilWebMVC.Models.Data;
-using Newtonsoft.Json;
+using AzureFantasy_Web.Models;
+using AzureFantasy_Web.Models.Data;
+using System.Security.Claims;
 
-namespace PrcoilWebMVC.Controllers.api;
+namespace AzureFantasy_Web.Controllers.api;
 
 //路由是直接函数名字
 [Route("")]
@@ -24,9 +23,9 @@ public class LoginRegisterController : ControllerBase
     [HttpPost("UserLogin")] //!!!跨域必须指定路由模板不同名称
     public IActionResult UserLogin([FromBody] UserLoginData? userLoginData)
     {
-        if (userLoginData == null) 
+        if (userLoginData == null)
             return Ok("userLoginData不能为null");
-        
+
         if (userLoginData.Cellphone == null)
             return Ok(new { message = "phone不能为null" });
 
@@ -44,7 +43,7 @@ public class LoginRegisterController : ControllerBase
         //如果密码不对:
         if (password != mySqlService.MySqlSelect("password", "cellphone", cellphone, DefaultSelectTable))
             return Ok(new { message = "密码错误" });
-        
+
         var claims = new List<Claim>()//身份验证信息
         {
             new Claim(ClaimTypes.MobilePhone,cellphone),
@@ -68,14 +67,14 @@ public class LoginRegisterController : ControllerBase
         if (userRegisterData != null)
         {
             var mySqlService = new MySqlService(); //数据库对象
-            
+
             var cellphone = userRegisterData.Cellphone;
             var username = userRegisterData.Username;
             var password = userRegisterData.Password;
             var recaptchaToken = userRegisterData.RecaptchaToken;
             //未设置email
             var email = "";
-            
+
             //reCaptcha验证:
             // 验证秘钥
             var secret1 = "6LfZDdooAAAAAMFxgUk8zREAhpssteFrlgxRc7GC";
@@ -91,13 +90,13 @@ public class LoginRegisterController : ControllerBase
             };
 
             // 发送 HTTP POST 请求
-            
+
             double result = httpClientServer.SendPostRequest(apiUrl, formData);
             //double result = 0.2;
 
             Console.WriteLine($"Response: {result}");
-            
-            if (result == 999) 
+
+            if (result == 999)
             {
                 return Ok(new { message = "验证服务器错误" });
             }
@@ -111,7 +110,7 @@ public class LoginRegisterController : ControllerBase
             // {
             //     Console.WriteLine("Failed to send HTTP POST request.");
             // }
-            
+
 
             //如果找不到账户:
             if ("DataNotFound" == mySqlService.MySqlSelect("password", "cellphone", cellphone, DefaultSelectTable))
