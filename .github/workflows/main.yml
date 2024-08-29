@@ -1,0 +1,35 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Deploy to GitHub Pages
+
+# 在每次推送时运行
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy-to-github-pages:
+    # 用Ubuntu最新版本
+    runs-on: ubuntu-latest
+    steps:
+    
+    # uses GitHub's checkout action to checkout code form the master branch
+    - uses: actions/checkout@v3
+    
+    # sets up .NET Core SDK 8.0.x
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.0.x
+        
+    # publishes MVC project to the release-folder
+    - name: Publish .NET Core Project
+      run: dotnet publish AzureFantasy_Web.csproj -c Release -o release --nologo
+    
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot
