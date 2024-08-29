@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrcoilWebAPI", "PrcoilWebAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateData", "更新数据\UpdateData.csproj", "{7FB42BE2-B411-403C-AFAA-FDAC5AB833BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFantasy_Web", "PrcoilWebMVC\AzureFantasy_Web.csproj", "{4BBD15AE-C881-46ED-8209-5C08BE85B2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFantasy_Web", "AzureFantasy_Web\AzureFantasy_Web.csproj", "{4BBD15AE-C881-46ED-8209-5C08BE85B2CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
